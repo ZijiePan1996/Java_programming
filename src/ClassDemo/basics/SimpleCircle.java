@@ -8,6 +8,7 @@ public class SimpleCircle {
         System.out.println(circle1.getArea());
         circle1.setRadius(1.0);
         System.out.println(circle1.getArea());
+        littleCircle circle2;
     }
 
 
@@ -19,12 +20,12 @@ class littleCircle{
 
 
     littleCircle(){
-        radius =1;
+        this(1.0); //this关键字用于调用另一个构造方法
         numberofObjects++;
     }
 
-    littleCircle(double newRadius){
-        radius = newRadius;
+    littleCircle(double radius){
+        this.radius = radius;  //this关键字用于引用所构建的对象的隐藏数据域radius
         numberofObjects++;
     }
 

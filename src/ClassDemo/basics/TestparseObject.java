@@ -5,6 +5,8 @@ import sun.java2d.pipe.SpanShapeRenderer;
 /**
  * Created by Pan on 27/10/20.
  */
+
+//不可变对象和类：所有数据域都是私有的，没有修改器方法，没有一个返回指向可变数据域的引用对的访问器方法
 public class TestparseObject {
     public static void main(String[] args) {
         littleCircle mycircle = new littleCircle();
