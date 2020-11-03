@@ -19,6 +19,8 @@ public class SingleLinkedlist {
         }
     }
 
+
+
     public Object addHead(Object obj){
         Node newHead = new Node(obj); //definition of the new node
         if(length ==0){

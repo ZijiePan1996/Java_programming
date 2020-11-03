@@ -6,6 +6,7 @@ public class BinaryTree {
     public Node getRoot(){
         return root;
     }
+
     public void insertBST(int key){
         Node p = root;
         Node prev = null;
@@ -34,6 +35,7 @@ public class BinaryTree {
             inOrderTraverse(node.getRight());
         }
     }
+
     public void beforeOrderTraverse(Node node){
         if (node !=null){
             System.out.print(" " + node.getValue() + " ");

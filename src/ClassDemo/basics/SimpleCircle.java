@@ -5,10 +5,16 @@ public class SimpleCircle {
     public static void main(String[] args) {
         //ins是对象的引用，getArea是实例方法
         littleCircle circle1 = new littleCircle(5);
+
+        System.out.println(circle1.getClass());
+
         System.out.println(circle1.getArea());
         circle1.setRadius(1.0);
         System.out.println(circle1.getArea());
         littleCircle circle2;
+        Double yesDouble = (Double) 9.0;
+        int a = yesDouble.intValue();
+        System.out.println(a);
     }
 
 
