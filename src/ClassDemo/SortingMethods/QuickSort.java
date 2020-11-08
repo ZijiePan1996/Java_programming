@@ -26,6 +26,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
+        System.out.println("nice push");
         System.out.println("test");
     }
 
