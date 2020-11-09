@@ -1,7 +1,7 @@
 package ClassDemo.Algorithms.Pointer;
-
 import java.util.Arrays;
 
+//独立完成最近三个数之和
 public class CloestThreeSum {
     public static int threeSumtarget(int[] nums, int target){
         if( nums.length < 3) return  0;
