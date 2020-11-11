@@ -45,5 +45,6 @@ public class SingleNumber {
         System.out.println(singleNumber(testlist));
         System.out.println(singleNumberBySet(testlist));
         System.out.println(singleNumberByXOR(testlist));
+        System.out.println("8ad17b78b0fd9bf18efb1e2c6d25979b4ae8cc43");
     }
 }
