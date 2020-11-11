@@ -54,5 +54,6 @@ public class nextPermutation {
         int[] testnums = new int[] {1,2};
         nextPermutation(testnums);
         System.out.println(Arrays.toString(testnums));
+
     }
 }
