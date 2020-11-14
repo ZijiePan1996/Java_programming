@@ -41,5 +41,6 @@ public class RoutetoFreedom {
 
     public static void main(String[] args) {
         System.out.println(findRotateSteps("godding","gd"));
+        
     }
 }
