@@ -24,5 +24,7 @@ public class RelativeSortArray1122 {
         int[] arr2 = new int[] {2,1,4,3,9,6};
         int[] newarray = relativeSortArray(arr1, arr2);
         System.out.println(Arrays.toString(newarray));
+        String test = "test";
+        System.out.println(test.substring(0,5));
     }
 }
