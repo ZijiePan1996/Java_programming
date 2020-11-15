@@ -33,6 +33,6 @@ public class DequeLeetcode422 {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeKdigits("1432219", 3));
+        System.out.println(removeKdigits("10", 1));
     }
 }
