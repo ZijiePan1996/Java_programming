@@ -18,5 +18,10 @@ public class reverseString {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(reverseString(new char[] {'h','e','l','l','o'})));
+        String s = "123345";
+        char[] news = s.toCharArray();
+        for(char i:news){
+            System.out.println(i);
+        }
     }
 }
