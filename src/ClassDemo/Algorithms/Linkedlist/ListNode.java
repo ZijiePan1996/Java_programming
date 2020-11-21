@@ -67,6 +67,8 @@ public class ListNode {
             System.out.println(result.val);
             result = result.next;
         }
+        String s = "Hello";
+        char[] s1 = s.toCharArray();;
 
     }
  }
