@@ -27,4 +27,12 @@ public class Minstack {
     public int getMin(){
         return minStack.peek();
     }
+
+    public static void main(String[] args) {
+        Minstack minstack = new Minstack();
+        minstack.push(-2);
+        minstack.push(100);
+        minstack.push(50);
+        System.out.println(minstack.getMin());
+    }
 }
