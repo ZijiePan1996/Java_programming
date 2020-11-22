@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class isAnagram {
+
+    @Deprecated
+    @SuppressWarnings("all")
     public static boolean isAnagram(String s, String t) {
         Map<Character, Integer> hashmaps = new HashMap<>();
         Map<Character, Integer> hashmapt = new HashMap<>();
@@ -20,6 +23,7 @@ public class isAnagram {
         if(hashmaps.equals(hashmapt)){return true;}
         else return false;
     }
+
 
     public boolean realisAnagram(String s, String t) {
         if (s.length() != t.length()) {
@@ -40,7 +44,7 @@ public class isAnagram {
     }
 
     public static void main(String[] args) {
-        System.out.println(isAnagram("Hello", "olleH"));
+        //System.out.println(isAnagram("Hello", "olleH"));
         String s = "Yes";
         System.out.println(s.length());
     }
