@@ -1,5 +1,11 @@
 package ClassDemo.Algorithms.Linkedlist;
 
+import java.util.List;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ListNode {
       int val;
       ListNode next;
@@ -33,6 +39,7 @@ public class ListNode {
           ListNode sorted = merge(list1, list2);
           return sorted;
       }
+
       public static ListNode merge(ListNode head1, ListNode head2){
           ListNode dummyHead = new ListNode(0);
           ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
@@ -54,21 +61,46 @@ public class ListNode {
           return dummyHead.next;
       }
 
+      public static ListNode reverse(ListNode head){
+          ListNode prev = null;
+          ListNode curr = head;
+          while(curr != null){
+              ListNode temp = curr.next;
+              curr.next = prev;
+              prev = curr;
+              curr = temp;
+          }
+          return prev;
+      }
+
+      public static boolean isPalindrome(ListNode head){
+          ArrayList<Integer> shadowlist = new ArrayList<>();
+          ListNode curr = head;
+          while(curr != null){
+              shadowlist.add(curr.val);
+              curr = curr.next;
+          }
+          int start = 0;
+          int end = shadowlist.size()-1;
+          while(start<end){
+              if(shadowlist.get(start) == shadowlist.get(end)){
+                  start++; end --;
+                  continue;
+              } else return false;
+          }
+          return true;
+      }
+
     public static void main(String[] args) {
-        ListNode listNode4 = new ListNode(4);
+        ListNode listNode4 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
-        ListNode listNode1 = new ListNode(1);
-        ListNode listNode3 = new ListNode(3);
+        ListNode listNode1 = new ListNode(-129);
+        ListNode listNode3 = new ListNode(-129);
         listNode4.next = listNode2;
         listNode2.next = listNode1;
         listNode1.next = listNode3;
         ListNode result = sortList(listNode4);
-        while(result != null){
-            System.out.println(result.val);
-            result = result.next;
-        }
-        String s = "Hello";
-        char[] s1 = s.toCharArray();;
+        System.out.println(isPalindrome(listNode2));
 
     }
  }
