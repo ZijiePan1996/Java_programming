@@ -91,16 +91,59 @@ public class ListNode {
           return true;
       }
 
+      public static ListNode addTwoNumbers(ListNode l1, ListNode l2){
+          int carry = 0;
+          ListNode p1 = l1;
+          ListNode p2 = l2;
+          ListNode dummyHead = new ListNode(0);
+          ListNode head = dummyHead;
+          while(p1 != null && p2 != null){
+                  ListNode newNode = new ListNode((p1.val + p2.val + carry)%10);
+                  carry = (p1.val + p2.val + carry)/10;
+                  head.next = newNode;
+                  head = newNode;
+                  p1 = p1.next;
+                  p2 = p2.next;
+          }
+          if(p1 == null){
+              while(p2 != null){
+                  ListNode newNodep2 = new ListNode((p2.val + carry)%10);
+                  carry  = (p2.val+carry)/10;
+                  head.next = newNodep2;
+                  head = newNodep2;
+                  p2 = p2.next;
+              }
+              if(carry == 1){
+                  head.next = new ListNode(1);
+              }
+          }
+          if(p2 == null){
+              while(p1 != null){
+                  ListNode newNodep1 = new ListNode((p1.val + carry)%10);
+                  carry  = (p1.val+carry)/10;
+                  head.next = newNodep1;
+                  head = newNodep1;
+                  p1 = p1.next;
+              }
+              if(carry == 1){
+                  head.next = new ListNode(1);
+              }
+          }
+
+          return dummyHead.next;
+      }
+
     public static void main(String[] args) {
         ListNode listNode4 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
-        ListNode listNode1 = new ListNode(-129);
-        ListNode listNode3 = new ListNode(-129);
+        ListNode listNode1 = new ListNode(3);
+        ListNode listNode3 = new ListNode(4);
         listNode4.next = listNode2;
         listNode2.next = listNode1;
         listNode1.next = listNode3;
         ListNode result = sortList(listNode4);
-        System.out.println(isPalindrome(listNode2));
+        //System.out.println(isPalindrome(listNode2));
+        System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
 
     }
  }
