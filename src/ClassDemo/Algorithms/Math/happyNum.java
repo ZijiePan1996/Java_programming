@@ -28,6 +28,9 @@ public class happyNum {
     }
 
     public static void main(String[] args) {
+        char a = '童';
+        short b = (short) (a-1);
+        System.out.println(b);
         System.out.println(isHappy(19));
     }
 }
