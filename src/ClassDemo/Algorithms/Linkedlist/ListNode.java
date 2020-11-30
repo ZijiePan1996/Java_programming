@@ -133,17 +133,47 @@ public class ListNode {
           return dummyHead.next;
       }
 
+      public static ListNode oddEvenlist(ListNode head){
+          if(head.next == null){
+              return head;
+          }
+          ListNode dummyHead = new ListNode(0);
+          dummyHead.next = head;
+          ListNode odd = head;
+          ListNode evenHead = head.next;
+          ListNode even = head.next;
+          while(odd!=null && even != null){
+              if(even.next != null){
+                  odd.next = even.next;
+                  odd = odd.next;
+              } else break;
+              if(odd.next != null){
+                even.next = odd.next;
+                even = even.next;
+              } else {
+                  even.next = null;
+                  break;
+              }
+          }
+          odd.next = evenHead;
+
+          return dummyHead.next;
+      }
+
     public static void main(String[] args) {
         ListNode listNode4 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
         ListNode listNode1 = new ListNode(3);
         ListNode listNode3 = new ListNode(4);
+        ListNode listNode5 = new ListNode(5);
         listNode4.next = listNode2;
         listNode2.next = listNode1;
         listNode1.next = listNode3;
+        listNode3.next = listNode5;
         ListNode result = sortList(listNode4);
         //System.out.println(isPalindrome(listNode2));
-        System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
+        //System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
+        System.out.println(oddEvenlist(listNode4).next.val);
 
     }
  }
