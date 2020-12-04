@@ -1,10 +1,6 @@
 package ClassDemo.Algorithms.Linkedlist;
 
-import java.util.List;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ListNode {
       int val;
@@ -133,17 +129,52 @@ public class ListNode {
           return dummyHead.next;
       }
 
+      public static ListNode deleteDuplicates(ListNode head) {
+        if(head == null) return null;
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        Map<Integer, Integer> hashmap = new HashMap<>();
+        while(head != null){
+            if(!hashmap.containsKey(head.val)) {
+                hashmap.put(head.val, 1);
+                head = head.next;
+            }
+            else {
+                hashmap.put(head.val, hashmap.get(head.val)+1);
+                head = head.next;
+            }
+        }
+        head = dummyHead;
+        while(head != null && head.next != null){
+            if(hashmap.get(head.next.val)>1){
+                ListNode recur = head.next;
+                while(recur.next != null && hashmap.get(recur.next.val)>1) {
+                    recur = recur.next;
+                }
+                head.next = recur.next;
+                head = head.next;
+            }
+            else head = head.next;
+        }
+
+
+        return dummyHead.next;
+    }
+
+
+
     public static void main(String[] args) {
         ListNode listNode4 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
-        ListNode listNode1 = new ListNode(3);
-        ListNode listNode3 = new ListNode(4);
+        ListNode listNode1 = new ListNode(2);
+        ListNode listNode3 = new ListNode(2);
         listNode4.next = listNode2;
         listNode2.next = listNode1;
         listNode1.next = listNode3;
         ListNode result = sortList(listNode4);
         //System.out.println(isPalindrome(listNode2));
-        System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
+        //System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
+        System.out.println(deleteDuplicates(listNode4));
 
     }
  }
