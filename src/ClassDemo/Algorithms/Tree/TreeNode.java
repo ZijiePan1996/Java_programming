@@ -2,10 +2,7 @@ package ClassDemo.Algorithms.Tree;
 
 import apple.laf.JRSUIUtils;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeNode {
     private int val;
@@ -57,6 +54,85 @@ public class TreeNode {
         return true;
     }
 
+    //中序遍历的两种方式
+    public List<Integer> inorderTraversalByrecursive(TreeNode root){
+        List<Integer> res = new ArrayList<Integer>();
+        inorder(root, res);
+        return res;
+    }
+
+    public void inorder(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left, res);
+        res.add(root.val);
+        inorder(root.right, res);
+    }
+
+    public List<Integer> inorderTraversalBystack(TreeNode root){
+        List<Integer> res = new ArrayList<Integer>();
+        Deque<TreeNode> stk = new LinkedList<TreeNode>();
+        while(root != null || !stk.isEmpty()){
+            while(root != null){
+                stk.push(root);
+                root = root.left;
+            }
+            root = stk.pop();
+            res.add(root.val);
+            root = root.right;
+        }
+        return res;
+    }
+    public static int kthSmallest(TreeNode root, int k){
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+
+        while(true){
+            while (root != null){
+                stack.add(root);
+                root = root.left;
+            }
+            root  = stack.removeLast();
+            if(--k == 0) return root.val;
+            root = root.right;
+        }
+    }
+
+
+    public static List<List<Integer>> zigzaglevelOrder(TreeNode root){
+        Deque<TreeNode> stackodd = new LinkedList<>();
+        Deque<TreeNode> stackeven = new LinkedList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        int levelNumber = 1;
+        stackodd.push(root);
+        while(!stackodd.isEmpty() || !stackeven.isEmpty()){
+            if(levelNumber%2 != 0 ){
+                List<Integer> currresult = new ArrayList<>();
+                while(!stackodd.isEmpty()){
+                    TreeNode currNode = stackodd.pop();
+                    currresult.add(currNode.val);
+                    if (currNode.left != null) stackeven.push(currNode.left);
+                    if (currNode.right != null) stackeven.push(currNode.right);
+                }
+                levelNumber ++;
+                result.add(currresult);
+            }
+            else{
+                List<Integer> currresult = new ArrayList<>();
+                while(!stackeven.isEmpty()){
+                    TreeNode currNode = stackeven.pop();
+                    currresult.add(currNode.val);
+                    if(currNode.right != null) stackodd.push(currNode.right);
+                    if(currNode.left != null)stackodd.push(currNode.left);
+                }
+                levelNumber ++;
+                result.add(currresult);
+            }
+        }
+
+        return result;
+    }
+
 
     public static void main(String[] args) {
         TreeNode node0 = new TreeNode(5);
@@ -68,7 +144,9 @@ public class TreeNode {
         node0.right = node2;
         node2.left = node3;
         node2.right = node4;
-        System.out.println(isValidBSTbystack(node0));
+        //System.out.println(isValidBSTbystack(node0));
+        System.out.println(zigzaglevelOrder(node0));
+
     }
 
 }

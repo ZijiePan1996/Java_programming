@@ -160,6 +160,25 @@ public class ListNode {
           return dummyHead.next;
       }
 
+    public static ListNode swapPairs(ListNode head) {
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode temp = dummyHead;
+        while(temp != null){
+            if(temp.next!= null && temp.next.next != null){
+                ListNode n1 = temp.next;
+                ListNode n2 = temp.next.next;
+                n1.next = n2.next;
+                n2.next = n1;
+                temp.next = n2;
+                temp = n1;
+            }
+            else break;
+        }
+        return dummyHead.next;
+
+    }
+
     public static void main(String[] args) {
         ListNode listNode4 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
@@ -173,7 +192,8 @@ public class ListNode {
         ListNode result = sortList(listNode4);
         //System.out.println(isPalindrome(listNode2));
         //System.out.println(addTwoNumbers(listNode4, listNode4).next.next.val);
-        System.out.println(oddEvenlist(listNode4).next.val);
+        //System.out.println(oddEvenlist(listNode4).next.val);
+        swapPairs(listNode4);
 
     }
  }

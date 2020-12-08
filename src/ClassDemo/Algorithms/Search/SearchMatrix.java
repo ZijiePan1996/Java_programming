@@ -1,4 +1,4 @@
-package ClassDemo.Algorithms;
+package ClassDemo.Algorithms.Search;
 
 public class SearchMatrix {
     public static boolean searchMatrixForce(int[][] matrix, int target){
@@ -12,6 +12,8 @@ public class SearchMatrix {
         }
         return false;
     }
+
+
 
     public static boolean searchMatrixPointer(int[][] matrix, int target){
         int i = matrix.length-1;
