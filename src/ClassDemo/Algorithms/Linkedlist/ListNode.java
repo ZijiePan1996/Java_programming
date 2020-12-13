@@ -178,6 +178,26 @@ public class ListNode {
         return dummyHead.next;
 
     }
+    //leetcode 61
+    public static ListNode rotateRight(ListNode head, int k) {
+        int length = 1;
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        while(head.next!= null){
+            length++;
+            head= head.next;
+        }
+        ListNode newprev = head;
+        //形成闭环
+        newprev.next = dummyHead.next;
+        k = k%length;
+        for(int i =0; i< length-k;i++){
+            newprev = newprev.next;
+        }
+        ListNode result = newprev.next;
+        newprev.next = null;
+        return result;
+    }
 
     public static void main(String[] args) {
         ListNode listNode4 = new ListNode(1);
@@ -196,4 +216,5 @@ public class ListNode {
         swapPairs(listNode4);
 
     }
- }
+
+    }
